@@ -1,0 +1,114 @@
+a {
+    text-decoration: none;
+    color: #c9c6d2;
+}
+/********* Main Container ********/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    height: 100vh;
+}
+/************* Sub Container ********/
+.subContainer {
+    display: inline-flex;
+    margin: 0 auto;
+    box-shadow: 10px 15px 30px 40px #f1f1fa;
+}
+/********* Left Section Container ********/
+.leftContainer {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    line-height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 50px 15px 50px 50px;
+    box-shadow: 20px 0px 10px #f1f1fa;
+}
+.leftContainer img {
+    width: 150px;
+    height: 150px;
+}
+.leftContainer h3 {
+    font-weight: 100;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+}
+.leftContainer p {
+    color: #b9b6c1;
+}
+
+.leftContainer a {
+    text-decoration: none;
+    padding: 2px 50px;
+    color: #eb6ca4;
+    border: 1px solid #eb6ca4;
+    border-radius: 50px;
+    text-align: center;
+}
+.leftContainer a:hover {
+    background-color: #eb6ca4;
+    color: #fff;
+}
+/********* Right Section Container ********/
+.rightContainer {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    line-height: 4rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 50px 50px 50px 15px;
+    box-shadow: -20px 0px 10px #f1f1fa;
+}
+
+.rightContainer h3 {
+    margin-top: 50px;
+    font-size: small;
+}
+
+input[type="email"],
+input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #f0eef1;
+    width: 250px;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+}
+.subSection {
+    display: inline-flex;
+    justify-content: space-between;
+    align-content: center;
+    min-width: 250px;
+    font-size: 0.8rem;
+    color: #c9c6d2;
+}
+
+input[type="submit"] {
+    border: 1px solid #a176f3;
+    background: #a176f3;
+    color: #fff;
+    padding: 10px 50px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    border: 1px solid #8253da;
+    background-color: #8253da;
+    color: #fff;
+}
