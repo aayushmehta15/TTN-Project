@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const dotenv = require('dotenv').config();
 
-mongoose.connect("mongodb://localhost:27017/BuzzApp", {
+
+mongoose.connect(process.env.CONNECTION_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 });

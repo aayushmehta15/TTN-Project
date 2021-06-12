@@ -3,23 +3,16 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema(
     {
-        comment: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "profile",
-            },
-        ],
-        commentBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "profile",
+        profileId: { type: mongoose.Schema.Types.ObjectId, ref: "profile" },
+        postId: { type: mongoose.Schema.Types.ObjectId, ref: "post" },
+        decription: {
+            type: String,
+            default: "",
         },
-        commentDescription: { type: String, default: "" },
-        commentCount: { type: Number },
-        commentedOn: { type: Date, default: Date.now },
     },
-    { timestamps }
+    { timestamps: true }
 );
 
 const CommentModel = new mongoose.model("comment", CommentSchema);
 
-module.exports = { UserModel };
+module.exports = { CommentModel };

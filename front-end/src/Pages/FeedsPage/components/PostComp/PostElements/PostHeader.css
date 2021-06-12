@@ -1,0 +1,13 @@
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-header-left {
+    display: inline-flex;
+}
+
+.post-header-right {
+    display: inline-flex;
+}

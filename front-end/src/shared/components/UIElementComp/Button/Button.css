@@ -1,0 +1,13 @@
+.buttonStyle {
+    color: #2b7fd3;
+    padding: 8px 15px 8px 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1.8px solid #afd0ef;
+}
+.buttonStyle:hover {
+    color: #fff;
+    background-color: #2b7fd3;
+}

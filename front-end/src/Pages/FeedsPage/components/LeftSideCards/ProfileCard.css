@@ -1,0 +1,43 @@
+.Card-header {
+    position: relative;
+}
+.avatarMove {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.Card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    line-height: 1.5rem;
+}
+.Card-content h6 {
+    font-weight: 400;
+}
+
+.sub-card-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.sub-content-left {
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    border-right: 1px solid #e7e7e7;
+}
+.sub-content-right {
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+}
+
+.sub-card-content h5 {
+    color: #b1b1b3;
+}

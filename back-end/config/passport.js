@@ -39,6 +39,7 @@ passport.use(
                         const createProfile = await ProfileModel.create({
                             firstName: profile._json.given_name,
                             lastName: profile._json.family_name,
+                            userName: profile._json.name,
                             email: profile._json.email,
                             profileImage: profile._json.picture,
                             role:

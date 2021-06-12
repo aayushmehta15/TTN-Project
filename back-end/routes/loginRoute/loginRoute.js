@@ -17,14 +17,14 @@ router.get(
         session: false,
         failureRedirect: "/auth/google",
     }),
-    // function (req, res) {
-    //     var token = req.user.token;
-    //     res.redirect("http://localhost:3000?token=" + token);
-    // }
+   
     (req, res) => {
         let token = generateJwtToken(req, res);
         // console.log(token);
-        res.cookie("token", token, { httpOnly: true, secure: false });
+        res.cookie("auth_token", token, {
+            httpOnly: false,
+            secure: false,
+        });
         res.redirect("http://localhost:3000/feeds");
     }
 );

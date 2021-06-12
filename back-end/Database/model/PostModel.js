@@ -3,10 +3,18 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema(
     {
-        likes: Number,
-        dislike: Number,
-        postCreated: { type: Date, default: Date.now },
-        comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
+        profileId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "profile",
+        },
+        description: {
+            type: String,
+        },
+        postImage: {
+            type: String,
+        },
+        likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "profile" }],
+        dislike: [{ type: mongoose.Schema.Types.ObjectId, ref: "profile" }],
     },
     { timestamps: true }
 );

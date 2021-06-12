@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
-import logo from "../../assets/Logo/tothenewLogo.png";
+import React, { useEffect } from "react";
+import logo from "../../../assets/Logo/tothenewLogo.png";
 import classes from "./LoginPageComp.module.css";
-import queryString from "query-string";
+import { useDispatch } from "react-redux";
+import {setUserToken} from "../../../redux"
 
 const LoginPageComp = props => {
-    useEffect(() => {
-        var query = queryString.parse(props.location.search);
-        if (query.token) {
-            window.localStorage.setItem("jwt", query.token);
-            props.history.push("/");
-        }
-    }, []);
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(setUserToken())
+    },[])
     return (
         <div className={classes.container}>
             <div className={classes.subContainer}>
