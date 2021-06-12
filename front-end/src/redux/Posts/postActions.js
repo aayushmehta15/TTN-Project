@@ -1,5 +1,6 @@
 import axiosInstance from "../../axiosInstance";
 import {
+    CREATE_POST,
     FETCH_POST_FAILURE,
     FETCH_POST_REQUEST,
     FETCH_POST_SUCCESS,
@@ -23,16 +24,31 @@ export const fetchPostFailure = err => {
     };
 };
 
+export const createPostSuccess = () => {
+    return {
+        type: CREATE_POST,
+    };
+};
+
+export const createPostData = data => {
+    return function (dispatch) {
+        axiosInstance.post("/createPost", data).then(response => {
+            console.log(response);
+            dispatch(createPostSuccess());
+        });
+    };
+};
+
 export const fetchPostsData = () => {
-    // return function (dispatch) {
-    //     // dispatch(fetchUserRequest);
-    //     let response = axiosInstance
-    //         .get("/feedsData")
-    //         .then(response => {
-    //             // console.log(response.data);
-    //             const userData = response.data;
-    //             dispatch(fetchUserSuccess(userData));
-    //         })
-    //         .catch(error => dispatch(fetchUserFailure(error.message)));
-    // };
+    return function (dispatch) {
+        // dispatch(fetchUserRequest);
+        axiosInstance
+            .get("/getPostData")
+            .then(response => {
+                console.log(response);
+                const postData = response.data;
+                dispatch(fetchPostSuccess(postData));
+            })
+            .catch(error => dispatch(fetchPostFailure(error.message)));
+    };
 };

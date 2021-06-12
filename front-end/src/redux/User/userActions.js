@@ -26,7 +26,7 @@ export const fetchUserFailure = err => {
 export const fetchUserData = () => {
     return function (dispatch) {
         // dispatch(fetchUserRequest);
-        let response = axiosInstance
+        axiosInstance
             .get("/feedsData")
             .then(response => {
                 // console.log(response.data);

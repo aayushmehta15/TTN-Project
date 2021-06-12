@@ -8,6 +8,7 @@ function StyledTextField(props) {
                 placeholder={props.placeholder}
                 className="style-input"
                 value={props.value}
+                onChange={props.textChangeHandler}
                 required
             />
         </React.Fragment>

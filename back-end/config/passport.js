@@ -18,11 +18,9 @@ passport.use(
             // console.log(profile._json);
             if (profile._json.hd === "tothenew.com") {
                 try {
-                    console.log("FindOne working....");
                     const user = await UserModel.findOne({
                         email: profile._json.email,
                     });
-                    console.log("FindOne complete");
                     if (!user) {
                         // Putting data in User Model
                         const createUser = await UserModel.create({
@@ -37,6 +35,7 @@ passport.use(
                         });
                         // Putting data in Profile Model
                         const createProfile = await ProfileModel.create({
+                            _id: createUser._id,
                             firstName: profile._json.given_name,
                             lastName: profile._json.family_name,
                             userName: profile._json.name,

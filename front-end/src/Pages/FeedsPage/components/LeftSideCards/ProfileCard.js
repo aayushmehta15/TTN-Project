@@ -26,7 +26,7 @@ function ProfileCard(props) {
                         <h5>Friends</h5>
                     </div>
                     <div className="sub-content-right">
-                        <h4>10</h4>
+                        <h4>{props.postCount}</h4>
                         <h5>Post</h5>
                     </div>
                 </div>
