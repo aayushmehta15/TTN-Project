@@ -23,6 +23,7 @@ const FeedsPageComp = () => {
     const [user] = useSelector(state => state.feeds.userData);
     const postData = useSelector(state => state.posts.postData);
 
+    ///////////////////////////////CHECK POST////////////////////////////
     let displayPost =
         postData.length === 0 ? (
             <h1 style={{ textAlign: "center", color: "#787585" }}>
@@ -42,8 +43,9 @@ const FeedsPageComp = () => {
                 />
             ))
         );
-    // console.log(postData);
-    // console.log(user);
+
+    ///////////////////////////////CHECK FEEDSPAGE////////////////////////////
+
     let feedsPage =
         user === undefined ? (
             <Spinner />

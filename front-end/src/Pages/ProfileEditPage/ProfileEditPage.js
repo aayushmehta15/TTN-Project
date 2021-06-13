@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+// import React, { useEffect } from "react";
+// import { useSelector } from "react-redux";
 // import HeaderComp from "../../shared/components/HeaderComp/HeaderComp";
-import Card from "../../shared/components/UIElementComp/Card/Card";
+// import Card from "../../shared/components/UIElementComp/Card/Card";
 // import Spinner from "../../shared/components/UIElementComp/Spinner/Spinner";
 // import ProfileCard from "../FeedsPage/components/LeftSideCards/ProfileCard";
 import "./ProfileEditPage.css";
 function ProfileEditPage() {
-    const [user] = useSelector(state => state.feeds.userData);
+    // const [user] = useSelector(state => state.feeds.userData);
     // let ProfileEditPage =
     //     user === undefined ? (
     //         <Spinner />

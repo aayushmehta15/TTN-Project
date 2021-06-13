@@ -33,7 +33,7 @@ export const createCommentSuccess = () => {
 export const createCommentData = data => {
     return function (dispatch) {
         axiosInstance.post("/createComment", data).then(response => {
-            console.log(response);
+            // console.log(response);
             dispatch(createCommentSuccess());
         });
     };
@@ -45,9 +45,9 @@ export const fetchCommentData = () => {
         axiosInstance
             .get("/getCommentData")
             .then(response => {
-                console.log(response.data);
-                // const commentData = response.data;
-                // dispatch(fetchCommentSuccess(commentData));
+                // console.log(response.data);
+                const commentData = response.data;
+                dispatch(fetchCommentSuccess(commentData));
             })
             .catch(error => dispatch(fetchCommentFailure(error.message)));
     };

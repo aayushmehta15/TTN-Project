@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    createCommentData,
+    fetchCommentData,
+} from "../../../../redux/Comments/commentActions";
+
 import CommentComp from "../CommentComp/CommentComp";
 import Card from "../../../../shared/components/UIElementComp/Card/Card";
 import Avatar from "../../../../shared/components/UIElementComp/Avatar/Avatar";
-import StyledTextField from "../../../../shared/components/UIElementComp/StyleTextField/StyledTextField";
 import Moment from "react-moment";
 import "./PostComp.css";
-// import PostHeader from "./PostElements/PostHeader";
 const style = {
     display: "flex",
     justifyContent: "center",
@@ -25,15 +29,42 @@ const btnBarStyle = {
 
 function PostComp(props) {
     const [displayComments, setDisplayComments] = useState(false);
+    const [displayCommentsBtn, setDisplayCommentsBtn] = useState(false);
+    const commentUpdated = useSelector(state => state.comments.updateComment);
+    const dispatch = useDispatch();
 
+    // Data Filtering of the comments
+    const commentData = useSelector(state => state.comments.commentData);
+    const filterCommentsById = commentData.filter(
+        data => data.postId._id === props.postId
+    );
+
+    // check if we have a postImage or not and display accordingly
     const postImageDisplay =
         props.postImage === "" ? null : (
             <img src={props.postImage} alt="profileImage" />
         );
 
-    // date styling
-    // let date = props.time.split("T")[0];
-    // let dateStyle = new Date(date).toDateString();
+    // check new comment added or not and display accordingly
+    {
+        const checkNewComment = commentUpdated
+            ? dispatch(fetchCommentData())
+            : null;
+    }
+
+    // State setting comments data
+    const [comment, setComment] = useState({
+        profileId: props.profileId,
+        postId: props.postId,
+        description: "",
+    });
+
+    const commentSubmitHandler = event => {
+        event.preventDefault();
+        // console.log(comment);
+        dispatch(createCommentData(comment));
+        setComment({ ...comment, description: "" });
+    };
 
     return (
         <div className="postStyle">
@@ -105,7 +136,10 @@ function PostComp(props) {
                                     setDisplayComments(!displayComments)
                                 }
                             >
-                                comment
+                                {filterCommentsById.length}{" "}
+                                {filterCommentsById.length > 1
+                                    ? "comments"
+                                    : "comment"}
                             </p>
                         </div>
                     </div>
@@ -113,7 +147,7 @@ function PostComp(props) {
                     <div className="btnBars-container">
                         <hr />
                         <div className="btnBars">
-                            <button className="btn" onClick={() => {}}>
+                            <button className="btn">
                                 <i
                                     className="far fa-thumbs-up"
                                     style={btnBarStyle}
@@ -127,7 +161,12 @@ function PostComp(props) {
                                 />
                                 Dislike
                             </button>
-                            <button className="btn">
+                            <button
+                                className="btn"
+                                onClick={() => {
+                                    setDisplayCommentsBtn(!displayCommentsBtn);
+                                }}
+                            >
                                 <i
                                     className="far fa-comment-alt"
                                     style={btnBarStyle}
@@ -136,15 +175,52 @@ function PostComp(props) {
                             </button>
                         </div>
                     </div>
-
-                    {/*****************Comment Section*****************************/}
                     <hr />
-                    <br />
-                    {displayComments && (
-                        <CommentComp
-                            postId={props.postId}
-                            profileId={props.profileId}
-                        />
+                    {/*****************Comment Section*****************************/}
+
+                    {displayComments &&
+                        filterCommentsById.map(data => (
+                            <>
+                                <br />
+                                <CommentComp
+                                    key={data._id}
+                                    description={data.description}
+                                    userImage={data.profileId.profileImage}
+                                    userName={data.profileId.userName}
+                                />
+                            </>
+                        ))}
+                    {displayCommentsBtn && (
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                paddingTop: "15px",
+                            }}
+                        >
+                            <Avatar
+                                width="35"
+                                height="35"
+                                src={props.userImage}
+                            />
+                            <form
+                                onSubmit={commentSubmitHandler}
+                                style={{ width: "100%" }}
+                            >
+                                <input
+                                    type="text"
+                                    placeholder="Write a comment..."
+                                    className="input-comment"
+                                    value={comment.description}
+                                    onChange={event => {
+                                        setComment({
+                                            ...comment,
+                                            description: event.target.value,
+                                        });
+                                    }}
+                                />
+                            </form>
+                        </div>
                     )}
                 </main>
             </Card>

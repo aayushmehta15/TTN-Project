@@ -27,7 +27,7 @@ const commentReducer = (state = intialState, action) => {
                 loading: false,
                 err: "",
                 isAuth: true,
-                CommentData: action.payload,
+                commentData: action.payload,
                 updateComment: false,
             };
         case FETCH_COMMENT_FAILURE:
