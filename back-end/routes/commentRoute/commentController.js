@@ -15,10 +15,10 @@ const createComment = async (req, res) => {
     }
 };
 
-// const getAllComments = async (req, res) => {
-//     let response = await commentService.getAllComments(req.userData);
-//     console.log(response);
-//     res.send(response);
-// };
+const getAllComments = async (req, res) => {
+    let response = await commentService.getAllComments(req.userData);
+    console.log(response);
+    res.send(response);
+};
 
-module.exports = { createComment };
+module.exports = { getAllComments, createComment };

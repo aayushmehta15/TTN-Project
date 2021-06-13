@@ -14,17 +14,17 @@ const createComment = async data => {
     }
 };
 
-// const getAllComments = async userData => {
-//     try {
-//         const user = await CommentModel.find({})
-//             .populate("profileId")
-//             .sort({ createdAt: -1 })
-//             .exec();
-//         console.log(user);
-//         return user;
-//     } catch (error) {
-//         return error.message;
-//     }
-// };
+const getAllComments = async userData => {
+    try {
+        const comments = await CommentModel.find({})
+            .populate("profileId postId")
+            .sort({ createdAt: -1 })
+            .exec();
+        console.log(comments);
+        // return comments;
+    } catch (error) {
+        return error.message;
+    }
+};
 
-module.exports = { createComment };
+module.exports = { getAllComments, createComment };

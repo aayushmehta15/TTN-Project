@@ -1,7 +1,7 @@
 const { PostModel } = require("../../Database/model/PostModel");
 
 const createPost = async data => {
-    console.log(data);
+    // console.log(data);
     try {
         const user = await PostModel.create({
             profileId: data.profileId,
@@ -19,7 +19,7 @@ const getAllPosts = async userData => {
             .populate("profileId")
             .sort({ createdAt: -1 })
             .exec();
-        console.log(user);
+        // console.log(user);
         return user;
     } catch (error) {
         return error.message;

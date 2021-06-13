@@ -2,6 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const { mongoose } = require("./Database/Connection/connectMongoose");
+const formData = require("express-form-data");
 
 const passport = require("./config/passport");
 
@@ -19,7 +20,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(passport.initialize());
-
+app.use(formData.parse());
 // use Routes
 app.use(loginRoute);
 app.use(profileRoute);

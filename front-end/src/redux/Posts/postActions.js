@@ -32,10 +32,16 @@ export const createPostSuccess = () => {
 
 export const createPostData = data => {
     return function (dispatch) {
-        axiosInstance.post("/createPost", data).then(response => {
-            console.log(response);
-            dispatch(createPostSuccess());
-        });
+        axiosInstance
+            .post("/createPost", data, {
+                headers: {
+                    "Content-type": "multipart/form-data",
+                },
+            })
+            .then(response => {
+                console.log(response);
+                dispatch(createPostSuccess());
+            });
     };
 };
 

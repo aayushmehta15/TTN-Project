@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const { verifyJwtToken } = require("../../config/jwt-token");
 const postController = require("./postController");
 

@@ -15,7 +15,7 @@ router.get(
     "/auth/google/redirect",
     passport.authenticate("google", {
         session: false,
-        failureRedirect: "/",
+        failureRedirect: "http://localhost:3000",
     }),
     (req, res) => {
         let token = generateJwtToken(req, res);

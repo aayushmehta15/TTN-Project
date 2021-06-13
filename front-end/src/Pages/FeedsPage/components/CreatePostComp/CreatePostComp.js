@@ -10,6 +10,8 @@ import StyledTextField from "../../../../shared/components/UIElementComp/StyleTe
 import "./CreatePostComp.css";
 
 function CreatePostComp() {
+    const formData = new FormData();
+
     const [post, setPost] = useState({ description: "", postImage: "" });
     const dispatch = useDispatch();
     const updatedPost = useSelector(state => state.posts.updatePost);
@@ -21,11 +23,20 @@ function CreatePostComp() {
             <i
                 className={`fas fa-paper-plane createBtnStyle`}
                 onClick={event => {
-                    dispatch(createPostData(post));
+                    formData.append("description", post.description);
+                    formData.append("postImage", post.postImage);
+
+                    dispatch(createPostData(formData));
                     setPost({ ...post, description: "" });
                 }}
             />
         ) : null;
+
+    const handlePhoto = event => {
+        console.log(event.target.files[0]);
+        setPost({ ...post, postImage: event.target.files[0] });
+    };
+
     return (
         <Card>
             <div
@@ -50,7 +61,12 @@ function CreatePostComp() {
                     }
                 />
 
-                <input type="file" id="inputFile" style={{ display: "none" }} />
+                <input
+                    type="file"
+                    id="inputFile"
+                    style={{ display: "none" }}
+                    onChange={handlePhoto}
+                />
                 <label htmlFor="inputFile">
                     <i
                         className="fas fa-photo-video"
