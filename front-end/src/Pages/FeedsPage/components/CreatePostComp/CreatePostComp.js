@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     createPostData,
@@ -13,7 +13,7 @@ function CreatePostComp() {
     const [post, setPost] = useState({ description: "", postImage: "" });
     const dispatch = useDispatch();
     const updatedPost = useSelector(state => state.posts.updatePost);
-    console.log(updatedPost);
+    // console.log(updatedPost);
     const checkNewPost = updatedPost ? dispatch(fetchPostsData()) : null;
 
     const createPostBtn =
@@ -22,6 +22,7 @@ function CreatePostComp() {
                 className={`fas fa-paper-plane createBtnStyle`}
                 onClick={event => {
                     dispatch(createPostData(post));
+                    setPost({ ...post, description: "" });
                 }}
             />
         ) : null;

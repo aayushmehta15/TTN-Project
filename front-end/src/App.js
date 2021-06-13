@@ -3,32 +3,32 @@ import LoginPageComp from "./Pages/LoginPage/page/LoginPageComp";
 import FeedsPageComp from "./Pages/FeedsPage/page/FeedsPageComp";
 import { useSelector } from "react-redux";
 import "./App.css";
+import ProfileEditPage from "./Pages/ProfileEditPage/ProfileEditPage";
 
 function App(props) {
-    
-    let auth = useSelector((state=>state.auth.isAuth))
+    let checkAuth = useSelector(state => state.auth.isAuth);
     let route;
-    console.log("App auth variable:",auth)
-    // auth=true;
+    // console.log("App auth variable:", auth);
+    // // auth=true;
 
-    route = auth ? (
+    route = checkAuth ? (
         <>
             <Route path="/feeds">
                 <FeedsPageComp />
             </Route>
-            <Redirect to="/feeds"/>
-         </>
+            {/* <Route path="/edit/profile" exact>
+                <ProfileEditPage />
+            </Route> */}
+            <Redirect to="/feeds" />
+        </>
     ) : (
-            <Route path="/">
-                <LoginPageComp />
-            </Route>
-
+        <Route path="/">
+            <LoginPageComp />
+        </Route>
     );
     return (
         <div className="App">
-            <Switch>
-                {route}
-            </Switch>
+            <Switch>{route}</Switch>
         </div>
     );
 }

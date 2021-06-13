@@ -2,11 +2,15 @@ const { PostModel } = require("../../Database/model/PostModel");
 
 const createPost = async data => {
     console.log(data);
-    const user = await PostModel.create({
-        profileId: data.profileId,
-        description: data.description,
-        postImage: data.postImage,
-    });
+    try {
+        const user = await PostModel.create({
+            profileId: data.profileId,
+            description: data.description,
+            postImage: data.postImage,
+        });
+    } catch (error) {
+        return error.message;
+    }
 };
 
 const getAllPosts = async userData => {

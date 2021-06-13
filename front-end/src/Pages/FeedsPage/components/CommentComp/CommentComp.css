@@ -1,0 +1,27 @@
+.comment-container {
+    display: flex;
+    align-items: center;
+}
+
+.sub-comment-container {
+    background-color: #f0f2f5;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 1.5rem;
+}
+
+.input-comment {
+    background-color: #f0f2f5;
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 20px;
+    color: #82888e;
+    font-size: medium;
+}
+.input-comment:focus {
+    outline: none;
+    color: black;
+}

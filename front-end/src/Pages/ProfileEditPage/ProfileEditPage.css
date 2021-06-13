@@ -1,0 +1,29 @@
+.edit-body {
+    background-color: #eff2f5;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+
+.cover-image {
+    position: relative;
+    bottom: 20px;
+    width: 800px;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-image {
+    position: absolute;
+    top: 90px;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}

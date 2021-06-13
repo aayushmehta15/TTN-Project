@@ -19,7 +19,11 @@ function ProfileCard(props) {
             </div>
             <div className="Card-content">
                 <h4>{props.userName}</h4>
-                <h6>Newly Recruited at TTN</h6>
+                <h6>
+                    {props.desgnation === undefined
+                        ? ""
+                        : `${props.desgnation} at TTN`}
+                </h6>
                 <div className="sub-card-content">
                     <div className="sub-content-left">
                         <h4>234</h4>

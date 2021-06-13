@@ -6,13 +6,16 @@ import HeaderComp from "../../../shared/components/HeaderComp/HeaderComp";
 import Spinner from "../../../shared/components/UIElementComp/Spinner/Spinner";
 import CreatePostComp from "../components/CreatePostComp/CreatePostComp";
 import ProfileCard from "../components/LeftSideCards/ProfileCard";
+import RecentsCard from "../components/LeftSideCards/RecentsCard";
 import PostComp from "../components/PostComp/PostComp";
 import "./FeedsPageComp.css";
 const FeedsPageComp = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchUserData());
         dispatch(fetchPostsData());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [user] = useSelector(state => state.feeds.userData);
@@ -32,10 +35,12 @@ const FeedsPageComp = () => {
                     time={data.createdAt}
                     description={data.description}
                     postImage={data.postImage}
+                    postId={data._id}
+                    profileId={data.profileId._id}
                 />
             ))
         );
-    console.log(postData);
+    // console.log(postData);
     // console.log(user);
     let feedsPage =
         user === undefined ? (
@@ -55,9 +60,11 @@ const FeedsPageComp = () => {
                             profileImage={user.profileImage}
                             userName={user.userName}
                             coverImage={user.coverImage}
+                            designation={user.designation}
                             postCount={postData.length}
                         />
                         <br />
+                        <RecentsCard />
                     </div>
                     <div className="feeds-middle">
                         <CreatePostComp />
@@ -66,10 +73,6 @@ const FeedsPageComp = () => {
                         <br />
                     </div>
                     <div className="feeds-right"></div>
-
-                    {/* Sidebar left */}
-                    {/* Sidebar Right */}
-                    {/* Feeds */}
                 </main>
             </>
         );

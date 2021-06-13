@@ -15,9 +15,8 @@ router.get(
     "/auth/google/redirect",
     passport.authenticate("google", {
         session: false,
-        failureRedirect: "/auth/google",
+        failureRedirect: "/",
     }),
-   
     (req, res) => {
         let token = generateJwtToken(req, res);
         // console.log(token);
@@ -28,9 +27,5 @@ router.get(
         res.redirect("http://localhost:3000/feeds");
     }
 );
-
-// router.get("/profile", (req, res) => {
-//     res.send("UserAuthenticated");
-// });
 
 module.exports = router;

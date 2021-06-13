@@ -5,7 +5,7 @@ const CommentSchema = new Schema(
     {
         profileId: { type: mongoose.Schema.Types.ObjectId, ref: "profile" },
         postId: { type: mongoose.Schema.Types.ObjectId, ref: "post" },
-        decription: {
+        description: {
             type: String,
             default: "",
         },

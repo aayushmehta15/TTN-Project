@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPostsData } from "../../../../redux/Posts/postActions";
+import React, { useState } from "react";
+import CommentComp from "../CommentComp/CommentComp";
 import Card from "../../../../shared/components/UIElementComp/Card/Card";
 import Avatar from "../../../../shared/components/UIElementComp/Avatar/Avatar";
 import StyledTextField from "../../../../shared/components/UIElementComp/StyleTextField/StyledTextField";
@@ -24,14 +23,19 @@ const btnBarStyle = {
 };
 
 function PostComp(props) {
+    const [displayComments, setDisplayComments] = useState(false);
+
     const postImageDisplay =
         props.postImage === "" ? null : (
             <img src={props.postImage} alt="profileImage" />
         );
-    // const dispatch = useDispatch();
-    // const updatedPost = useSelector(state => state.posts.updatePost);
-    // console.log(updatedPost);
-    // const checkNewPost = updatedPost ? dispatch(fetchPostsData()) : null;
+
+    // date styling
+    let date = props.time.split("T")[0];
+    let dateStyle = new Date(date).toDateString();
+
+    //
+
     return (
         <div className="postStyle">
             <Card>
@@ -47,7 +51,7 @@ function PostComp(props) {
                         />
                         <div className="avatar-details">
                             <h5>{props.userName}</h5>
-                            <h6>{props.time}</h6>
+                            <h6>{dateStyle}</h6>
                         </div>
                     </div>
                     <div className="post-header-right">
@@ -56,7 +60,7 @@ function PostComp(props) {
                 </header>
                 {/******************* PostBody *******************/}
 
-                <main class="post-body">
+                <main className="post-body">
                     {/* Post Description */}
                     <p>{props.description}</p>
                     <br />
@@ -94,8 +98,13 @@ function PostComp(props) {
                             </span>
                         </div>
                         <div className="count-right">
-                            <p style={{ color: "#8D9198", marginTop: "5px" }}>
-                                1 comment
+                            <p
+                                style={{ color: "#8D9198", marginTop: "5px" }}
+                                onClick={() =>
+                                    setDisplayComments(!displayComments)
+                                }
+                            >
+                                comment
                             </p>
                         </div>
                     </div>
@@ -103,7 +112,7 @@ function PostComp(props) {
                     <div className="btnBars-container">
                         <hr />
                         <div className="btnBars">
-                            <button className="btn">
+                            <button className="btn" onClick={() => {}}>
                                 <i
                                     className="far fa-thumbs-up"
                                     style={btnBarStyle}
@@ -125,22 +134,17 @@ function PostComp(props) {
                                 Comment
                             </button>
                         </div>
-                        <hr />
                     </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            paddingTop: "15px",
-                        }}
-                    >
-                        <Avatar
-                            width="35"
-                            height="35"
-                            src="https://lh3.googleusercontent.com/a/AATXAJx50M2g4mVkpZ8BYP3UGbW07NmMyFCVBXlf4OV1=s96-c"
+
+                    {/*****************Comment Section*****************************/}
+                    <hr />
+                    <br />
+                    {displayComments && (
+                        <CommentComp
+                            postId={props.postId}
+                            profileId={props.profileId}
                         />
-                        <StyledTextField placeholder="Write a comment..." />
-                    </div>
+                    )}
                 </main>
             </Card>
             <br />

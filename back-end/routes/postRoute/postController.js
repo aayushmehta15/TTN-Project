@@ -7,14 +7,21 @@ const createPost = async (req, res) => {
         description: req.body.description,
         postImage: req.body.postImage,
     };
-
-    let response = await postService.createPost(data);
-    res.status(201).send(response);
+    try {
+        let response = await postService.createPost(data);
+        res.status(201).send(response);
+    } catch (err) {
+        res.send(err);
+    }
 };
 const getAllPosts = async (req, res) => {
-    let response = await postService.getAllPosts(req.userData);
-    console.log(response);
-    res.send(response);
+    try {
+        let response = await postService.getAllPosts(req.userData);
+        // console.log(response);
+        res.send(response);
+    } catch (err) {
+        res.send(err);
+    }
 };
 
 module.exports = { getAllPosts, createPost };

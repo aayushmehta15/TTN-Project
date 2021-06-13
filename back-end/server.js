@@ -9,6 +9,7 @@ const passport = require("./config/passport");
 const loginRoute = require("./routes/loginRoute/loginRoute");
 const profileRoute = require("./routes/profileRoute/profileRoute");
 const postRoute = require("./routes/postRoute/postRoute");
+const commentRoute = require("./routes/commentRoute/commentRoute");
 
 // configure express app and configure middleware needed for authentication
 const app = express();
@@ -23,5 +24,6 @@ app.use(passport.initialize());
 app.use(loginRoute);
 app.use(profileRoute);
 app.use(postRoute);
+app.use(commentRoute);
 
 app.listen(PORT, () => console.log("Server is Listening at Port:" + PORT));

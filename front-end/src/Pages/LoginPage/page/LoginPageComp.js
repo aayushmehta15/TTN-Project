@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import logo from "../../../assets/Logo/tothenewLogo.png";
 import classes from "./LoginPageComp.module.css";
 import { useDispatch } from "react-redux";
-import {setUserToken} from "../../../redux"
+import { setUserToken } from "../../../redux";
 
 const LoginPageComp = props => {
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(setUserToken())
-    },[])
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setUserToken());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return (
         <div className={classes.container}>
             <div className={classes.subContainer}>
