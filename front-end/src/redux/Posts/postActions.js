@@ -39,7 +39,7 @@ export const createPostData = data => {
                 },
             })
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 dispatch(createPostSuccess());
             });
     };
@@ -51,7 +51,7 @@ export const fetchPostsData = () => {
         axiosInstance
             .get("/getPostData")
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 const postData = response.data;
                 dispatch(fetchPostSuccess(postData));
             })

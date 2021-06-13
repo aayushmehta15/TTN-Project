@@ -26,4 +26,12 @@ const getAllPosts = async userData => {
     }
 };
 
+// const postLike = async Id => {
+//     try {
+//         const post = await PostModel.findOne({ _id: Id.postId });
+//         console.log(post);
+//         post.likes.push(profileId);
+//     } catch (err) {}
+// };
+
 module.exports = { getAllPosts, createPost };

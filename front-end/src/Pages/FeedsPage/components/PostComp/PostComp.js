@@ -4,12 +4,14 @@ import {
     createCommentData,
     fetchCommentData,
 } from "../../../../redux/Comments/commentActions";
+import { fetchLike } from "../../../../redux/LikeAndDislike/likeAndDislikeActions";
 
 import CommentComp from "../CommentComp/CommentComp";
 import Card from "../../../../shared/components/UIElementComp/Card/Card";
 import Avatar from "../../../../shared/components/UIElementComp/Avatar/Avatar";
 import Moment from "react-moment";
 import "./PostComp.css";
+import { fetchPostLike } from "../../../../redux/LikeAndDislike/likeAndDislikeActions";
 const style = {
     display: "flex",
     justifyContent: "center",
@@ -147,7 +149,14 @@ function PostComp(props) {
                     <div className="btnBars-container">
                         <hr />
                         <div className="btnBars">
-                            <button className="btn">
+                            <button
+                                className="btn"
+                                // onClick={() => {
+                                //     dispatch(
+                                //         fetchLike(props.profileId, props.postId)
+                                //     );
+                                // }}
+                            >
                                 <i
                                     className="far fa-thumbs-up"
                                     style={btnBarStyle}

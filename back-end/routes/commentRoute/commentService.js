@@ -1,7 +1,7 @@
 const { CommentModel } = require("../../Database/model/CommentModel");
 
 const createComment = async data => {
-    console.log(data);
+    // console.log(data);
     try {
         const user = await CommentModel.create({
             profileId: data.profileId,

@@ -35,4 +35,10 @@ const getAllPosts = async (req, res) => {
     }
 };
 
+// const postLike = async (req, res) => {
+//     console.log(req.body);
+//     const response = await postLike(req.body);
+//     // console.log(response);
+// };
+
 module.exports = { getAllPosts, createPost };
