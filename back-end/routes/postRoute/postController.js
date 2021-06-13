@@ -4,14 +4,19 @@ const { cloudinary } = require("../../cloudinary");
 const createPost = async (req, res) => {
     // console.log(req.body);
     // console.log(req.files);
-    const { postImage } = req.files;
-    const { url } = await cloudinary.uploader.upload(postImage.path);
-    // console.log("THis URL============>>>", url);
+    // Check TO see if we are getting an image or not.
+    let postImage = req.files;
+    console.log(postImage);
+    let postUrl =
+        Object.keys(postImage).length == 0
+            ? ""
+            : await cloudinary.uploader.upload(postImage.postImage.path);
     const data = {
         profileId: req.userData._id,
         description: req.body.description,
-        postImage: url,
+        postImage: postUrl === "" ? "" : postUrl.url,
     };
+
     try {
         let response = await postService.createPost(data);
         res.status(201).send(response);

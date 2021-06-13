@@ -16,12 +16,13 @@ const createComment = async data => {
 
 const getAllComments = async userData => {
     try {
+        // console.log("comments");
         const comments = await CommentModel.find({})
-            .populate("profileId postId")
-            .sort({ createdAt: -1 })
+            .populate("profileId")
+            .populate("postId")
             .exec();
-        console.log(comments);
-        // return comments;
+        // console.log(comments);
+        return comments;
     } catch (error) {
         return error.message;
     }

@@ -39,16 +39,16 @@ export const createCommentData = data => {
     };
 };
 
-// export const fetchPostsData = () => {
-//     return function (dispatch) {
-//         // dispatch(fetchUserRequest);
-//         axiosInstance
-//             .get("/getCommentData")
-//             .then(response => {
-//                 console.log(response);
-//                 const commentData = response.data;
-//                 dispatch(fetchCommentSuccess(commentData));
-//             })
-//             .catch(error => dispatch(fetchPostFailure(error.message)));
-//     };
-// };
+export const fetchCommentData = () => {
+    return function (dispatch) {
+        // dispatch(fetchUserRequest);
+        axiosInstance
+            .get("/getCommentData")
+            .then(response => {
+                console.log(response.data);
+                // const commentData = response.data;
+                // dispatch(fetchCommentSuccess(commentData));
+            })
+            .catch(error => dispatch(fetchCommentFailure(error.message)));
+    };
+};

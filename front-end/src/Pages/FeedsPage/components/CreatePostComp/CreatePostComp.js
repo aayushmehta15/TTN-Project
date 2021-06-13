@@ -19,7 +19,7 @@ function CreatePostComp() {
     const checkNewPost = updatedPost ? dispatch(fetchPostsData()) : null;
 
     const createPostBtn =
-        post.description !== "" ? (
+        post.description !== "" || post.postImage !== "" ? (
             <i
                 className={`fas fa-paper-plane createBtnStyle`}
                 onClick={event => {
@@ -27,7 +27,7 @@ function CreatePostComp() {
                     formData.append("postImage", post.postImage);
 
                     dispatch(createPostData(formData));
-                    setPost({ ...post, description: "" });
+                    setPost({ ...post, description: "", postImage: "" });
                 }}
             />
         ) : null;

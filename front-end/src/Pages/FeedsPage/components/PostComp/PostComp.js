@@ -3,6 +3,7 @@ import CommentComp from "../CommentComp/CommentComp";
 import Card from "../../../../shared/components/UIElementComp/Card/Card";
 import Avatar from "../../../../shared/components/UIElementComp/Avatar/Avatar";
 import StyledTextField from "../../../../shared/components/UIElementComp/StyleTextField/StyledTextField";
+import Moment from "react-moment";
 import "./PostComp.css";
 // import PostHeader from "./PostElements/PostHeader";
 const style = {
@@ -31,10 +32,8 @@ function PostComp(props) {
         );
 
     // date styling
-    let date = props.time.split("T")[0];
-    let dateStyle = new Date(date).toDateString();
-
-    //
+    // let date = props.time.split("T")[0];
+    // let dateStyle = new Date(date).toDateString();
 
     return (
         <div className="postStyle">
@@ -51,7 +50,9 @@ function PostComp(props) {
                         />
                         <div className="avatar-details">
                             <h5>{props.userName}</h5>
-                            <h6>{dateStyle}</h6>
+                            <h6 style={{ fontWeight: "400" }}>
+                                <Moment fromNow>{props.time}</Moment>
+                            </h6>
                         </div>
                     </div>
                     <div className="post-header-right">

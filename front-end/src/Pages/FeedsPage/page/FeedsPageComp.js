@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCommentData } from "../../../redux/Comments/commentActions";
 import { fetchPostsData } from "../../../redux/Posts/postActions";
 import { fetchUserData } from "../../../redux/User/userActions";
 import HeaderComp from "../../../shared/components/HeaderComp/HeaderComp";
@@ -15,6 +16,7 @@ const FeedsPageComp = () => {
     useEffect(() => {
         dispatch(fetchUserData());
         dispatch(fetchPostsData());
+        dispatch(fetchCommentData());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
