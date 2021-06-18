@@ -14,7 +14,7 @@ passport.use(
             callbackURL: process.env.CALL_BACK_URL,
         },
         async function (accessToken, refreshToken, profile, done) {
-            //console.log(profile);
+            // console.log(profile);
             // console.log(profile._json);
             if (profile._json.hd === "tothenew.com") {
                 try {
@@ -33,6 +33,7 @@ passport.use(
                                     ? "admin"
                                     : "user",
                         });
+
                         // Putting data in Profile Model
                         const createProfile = await ProfileModel.create({
                             _id: createUser._id,

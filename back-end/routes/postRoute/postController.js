@@ -4,6 +4,7 @@ const { cloudinary } = require("../../cloudinary");
 const createPost = async (req, res) => {
     // console.log(req.body);
     // console.log(req.files);
+
     // Check TO see if we are getting an image or not.
     let postImage = req.files;
     console.log(postImage);

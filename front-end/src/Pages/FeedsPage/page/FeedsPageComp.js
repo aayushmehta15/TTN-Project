@@ -10,6 +10,7 @@ import ProfileCard from "../components/LeftSideCards/ProfileCard";
 import RecentsCard from "../components/LeftSideCards/RecentsCard";
 import PostComp from "../components/PostComp/PostComp";
 import "./FeedsPageComp.css";
+
 const FeedsPageComp = () => {
     const dispatch = useDispatch();
 

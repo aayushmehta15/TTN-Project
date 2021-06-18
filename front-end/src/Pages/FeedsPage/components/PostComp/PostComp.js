@@ -37,6 +37,7 @@ function PostComp(props) {
 
     // Data Filtering of the comments
     const commentData = useSelector(state => state.comments.commentData);
+
     const filterCommentsById = commentData.filter(
         data => data.postId._id === props.postId
     );
@@ -199,6 +200,7 @@ function PostComp(props) {
                                 />
                             </>
                         ))}
+
                     {displayCommentsBtn && (
                         <div
                             style={{
